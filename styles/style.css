@@ -184,10 +184,10 @@
   cursor: pointer;
 }
 
-/* .card__icon-button:focus-visible {
+.card__icon-button:focus-visible {
   outline-color: #000;
   transition: outline 0.3s linear;
-} */
+}
 
 .main__footer {
   display: flex;
