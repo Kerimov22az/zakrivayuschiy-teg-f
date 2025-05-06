@@ -21,7 +21,7 @@
   background-attachment: fixed;
   /* background-color: var(--bg-color); */
   margin: auto;
-  font-variation-settings: "wght" var(--regular-weight); 
+  font-variation-settings: "wght" var(--regular-weight);
 }
 
 .header {
@@ -35,11 +35,10 @@
   font-variation-settings: var(--regular-weight);
   text-transform: uppercase;
   /* outline: 2px solid #000; */
-  padding-block: 128px;
-  margin-block: 103px;
+  padding-block: 8rem;
+  margin-block: 6.5rem;
   background-color: #fff;
   gap: 20px;
-  /* block-size: clamp(327px, 10vw + 10px, 368px); */
 }
 
 .header__title {
@@ -59,10 +58,8 @@
   border: var(--border-card);
 }
 
-.section {
+.post {
   margin-block: 50px;
-  /* outline: 2px solid #000; */
-  /* background-color: #fff; */
 }
 
 .post__title {
@@ -80,13 +77,14 @@
 .watermark {
   position: absolute;
   z-index: 1;
-  top: 25px;
-  right: 25px;
+  inset-block-start: 25px;
+  inset-inline-end: 25px; 
   font-family: var(--accent-font);
   font-size: var(--font-size-card-label);
   mix-blend-mode: hard-light;
   color: var(--color);
   opacity: 0.5;
+  text-shadow: 1px var(--bg-color);
   /* color: #fff; */
 }
 
@@ -112,6 +110,13 @@
   margin-block-end: 27px;
 }
 
+.post__buttons {
+  display: flex;
+  align-self: end;
+  align-items: center;
+  gap: 8px;
+}
+
 .button {
   display: flex;
   position: relative;
@@ -132,7 +137,7 @@
     box-shadow: 2px 2px 0 1px var(--color);
   }
 }
-.button:focus{
+.button:focus {
   outline: none;
 }
 /* .button:focus-visible {
@@ -152,20 +157,36 @@
   block-size: 100%;
 }
 
-.post__buttons {
-  display: flex;
-  align-self: end;
-  gap: 8px;
-}
-
 .button:hover::before {
   transform: scaleX(1);
 }
 
 .button__text {
-  color: var(--color-text-button); 
-  transition: color 0.5s ease; 
+  color: var(--color-text-button);
+  transition: color 0.5s ease;
   mix-blend-mode: difference;
+}
+
+.card__like-button {
+  width: 130px;
+  height: 38px;
+}
+
+.card__icon-button {
+  display: flex;
+  background-color: transparent;
+  height: 34px;
+  border: none;
+  outline: 2px solid transparent;
+  transition: outline 0.3s ease;
+  align-self: center;
+  padding-inline: 0;
+  cursor: pointer;
+}
+
+.card__icon-button:focus-visible{
+  outline-color: #000;
+  transition: outline 0.3s linear;
 }
 
 .main__footer {
@@ -194,25 +215,8 @@
   transition: opacity 0.3s;
 }
 
-.card__like-button {
-  width: 130px;
-  height: 38px;
-}
-
-.card__icon-button {
-  height: 34px;
-  display: flex;
-  background-color: transparent;
-  border: none;
-  outline: 2px solid transparent;
-  transition: outline 0.3s ease;
-  align-self: center;
-  padding-inline: 0;
-  cursor: pointer;
-}
-
 .article_text:last-of-type {
-    margin-block-end: 25px;
+  margin-block-end: 25px;
 }
 
 .floppy_svg {
@@ -258,9 +262,8 @@
   border: var(--border-card);
   padding: 30px;
   inline-size: 353px;
-  block-size: 191px;
-  overflow: hidden
-} 
+  overflow: hidden;
+}
 
 .dialog__warning {
   display: flex;
@@ -291,56 +294,45 @@
 
 /* ФИЛЬТРЫ */
 
-.filter__groot {
-filter: grayscale(.8)
+.filter__grayscale {
+  filter: grayscale(0.8);
 }
 
-.filter__hulk {
-filter: sepia(.8)
+.filter__sepia {
+  filter: sepia(0.8);
 }
 
-.filter__ironman {
+.filter__brightness {
   object-position: top;
-  filter: brightness(.5);
+  filter: brightness(0.5);
 }
 
-.filter__loki {
-filter: contrast(4);
+.filter__contrast {
+  filter: contrast(4);
 }
 
-.filter__tor {
+.filter__saturate {
   object-position: top;
   filter: saturate(2);
 }
 
-.filter__spiderman {
-filter: hue-rotate(180deg);
+.filter__hue-rotate {
+  filter: hue-rotate(180deg);
 }
 
-.filter__strange {
-filter: blur(2px);
+.filter__blur {
+  filter: blur(2px);
 }
 
-.filter__capitan {
+.filter__drop-shadow {
   object-position: top;
-  filter: drop-shadow(10px 10px 5px #000) opacity(.7) saturate(2);
+  filter: drop-shadow(10px 10px 5px #000) opacity(0.7) saturate(2);
 }
-
-/* .like-icon:hover {
-  cursor: pointer;
-} */
-
-/* .like-icon {
-  transition: transform 0.2s; 
-}
-
-.like-icon.is-liked {
-  transform: scale(1.1); 
-} */
 
 @supports (
   (text-stroke: 1px var(--shadow-color)) or
-    (-webkit-text-stroke: 1px var(--shadow-color))) {
+    (-webkit-text-stroke: 1px var(--shadow-color))
+) {
   .watermark {
     text-shadow: none;
     -webkit-text-stroke: 1px var(--shadow-color);
@@ -349,28 +341,30 @@ filter: blur(2px);
 }
 
 @media (width <= 375px) {
+  .watermark {
+    inset-block-start: 20px;
+    inset-inline-end: 10px;   
+  }
   .footer__button {
-      flex-direction: column;
-      width: 312px;
-      height: 84px;
-      margin: 0;
-      gap: 4px;
+    flex-direction: column;
+    width: 312px;
+    height: 84px;
+    margin: 0;
+    gap: 4px;
   }
 
   .floppy_svg {
     width: 28px;
     height: 28px;
-}
+  }
 
-.header {
-  margin-block-start: 5.6em;
-  block-size: 325px;
-  /* block-size: 18.2em; */
-  /* block-size: clamp(327px, 10vw + 10px, 368px); */
-}
+  .header {
+    margin-block-start: 5.6em;
+    padding-block: 7.5rem;
+  }
 
-.dialog[open] {
-  padding: 28px 34px 28px 40px;
-  max-inline-size: 340px;
-}
+  .dialog[open] {
+    padding: 30px 42px 30px 40px;
+    max-inline-size: 340px;
+  }
 }
