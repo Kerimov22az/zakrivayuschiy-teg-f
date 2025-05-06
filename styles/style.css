@@ -137,6 +137,7 @@
     box-shadow: 2px 2px 0 1px var(--color);
   }
 }
+
 .button:focus {
   outline: none;
 }
@@ -189,7 +190,6 @@
   }
   
 }
-
 
 .main__footer {
   display: flex;
