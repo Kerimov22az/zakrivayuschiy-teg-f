@@ -78,7 +78,7 @@
   position: absolute;
   z-index: 1;
   inset-block-start: 25px;
-  inset-inline-end: 25px; 
+  inset-inline-end: 25px;
   font-family: var(--accent-font);
   font-size: var(--font-size-card-label);
   mix-blend-mode: hard-light;
@@ -184,7 +184,7 @@
   cursor: pointer;
 }
 
-.card__icon-button:focus-visible{
+.card__icon-button:focus-visible {
   outline-color: #000;
   transition: outline 0.3s linear;
 }
@@ -202,7 +202,6 @@
   width: 335px;
   min-height: 55px;
   gap: 8px;
-  display: flex;
 }
 
 .floppy_svg {
@@ -217,11 +216,6 @@
 
 .article_text:last-of-type {
   margin-block-end: 25px;
-}
-
-.floppy_svg {
-  width: 21px;
-  height: 21px;
 }
 
 .dialog_floppy_svg {
@@ -345,6 +339,7 @@
     inset-block-start: 20px;
     inset-inline-end: 10px;   
   }
+
   .footer__button {
     flex-direction: column;
     width: 312px;
